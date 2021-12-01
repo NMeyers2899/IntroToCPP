@@ -1,6 +1,14 @@
 #include "Entity.h"
 
-Entity::Entity(char icon, float health, float attackPower, float defense) 
+Entity::Entity()
+{
+	m_icon = '\0';
+	m_health = 0;
+	m_attackPower = 0;
+	m_defense = 0;
+}
+
+Entity::Entity(char icon, float health, float attackPower, float defense)
 {
 	m_icon = icon;
 	m_health = health;
