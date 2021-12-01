@@ -12,7 +12,7 @@ public:
 	float getDefense() { return m_defense; }
 
 	float takeDamage(float damageAmount);
-	float attack(Entity target);
+	float attack(Entity* target);
 
 private: 
 	char m_icon;
