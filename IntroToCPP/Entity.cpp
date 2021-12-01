@@ -11,7 +11,7 @@ Entity::Entity(char icon, float health, float attackPower, float defense)
 float Entity::takeDamage(float damageAmount)
 {
 	// Subtracts the damage being dealt by the entity's defense.
-	float damageTaken = damageAmount - (getDefense() * 2);
+	float damageTaken = damageAmount - getDefense();
 
 	// If the damage being taken is less than zero...
 	if (damageTaken < 0)
@@ -31,5 +31,5 @@ float Entity::takeDamage(float damageAmount)
 
 float Entity::attack(Entity target)
 {
-	return target.takeDamage(m_attackPower * 4);
+	return target.takeDamage(m_attackPower);
 }
