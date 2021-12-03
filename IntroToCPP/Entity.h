@@ -14,6 +14,8 @@ public:
 	float takeDamage(float damageAmount);
 	float attack(Entity* target);
 
+	void printStats();
+
 private: 
 	char m_icon;
 	float m_health;
