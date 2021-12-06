@@ -3,13 +3,15 @@
 #include "StartScene.h"
 
 bool Engine::m_applicationShouldClose = false;
+int Engine::m_sceneCount = 0;
+Scene** Engine::m_scenes;
+Scene* Engine::m_currentScene;
 
 Engine::Engine()
 {
 	m_applicationShouldClose = false;
 	m_sceneCount = 0;
 	m_scenes[m_sceneCount];
-	m_currentScene = m_scenes[0];
 }
 
 Engine::~Engine()
@@ -33,28 +35,30 @@ void Engine::addScene(Scene* scene)
 
 void Engine::start()
 {
-	StartScene start;
+	StartScene* start = new StartScene();
+	Scene* firstScene = new Scene();
 
-	for (int i = 0; i < m_sceneCount; i++)
-		m_scenes[i]->start;
+	addScene(start);
+	addScene(firstScene);
+
+	m_currentScene = m_scenes[0];
+
+	m_currentScene->start();
 }
 
 void Engine::update()
 {
-	for (int i = 0; i < m_sceneCount; i++)
-		m_scenes[i]->update;
+	m_currentScene->update();
 }
 
 void Engine::draw()
 {
-	for (int i = 0; i < m_sceneCount; i++)
-		m_scenes[i]->draw;
+	m_currentScene->draw();
 }
 
 void Engine::end()
 {
-	for (int i = 0; i < m_sceneCount; i++)
-		m_scenes[i]->end;
+	m_currentScene->end();
 }
 
 void Engine::run()

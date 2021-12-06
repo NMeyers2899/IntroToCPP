@@ -3,8 +3,10 @@
 class Actor
 {
 public:
-	Actor();
+	Actor() { m_name = ""; }
 	Actor(const char* name) { m_name = name; }
+
+	bool getStarted();
 
 	virtual void start() { m_started = true; }
 	virtual void update() {};

@@ -8,6 +8,8 @@ public:
 	SimulationManager();
 	~SimulationManager();
 
+	void getCurrentFighters();
+
 	void start() override;
 	void update() override;
 

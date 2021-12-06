@@ -5,7 +5,7 @@ class Entity : public Actor
 {
 public:
 	Entity();
-	Entity(float health, float attack, float defense);
+	Entity(const char* name, float health, float attack, float defense);
 
 	float getHealth() { return m_health; }
 	float getAttackPower() { return m_attackPower; }

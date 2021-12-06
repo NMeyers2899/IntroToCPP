@@ -8,7 +8,8 @@ Entity::Entity()
 	m_defense = 0;
 }
 
-Entity::Entity(float health, float attackPower, float defense)
+Entity::Entity(const char* name, float health, float attackPower, float defense) :
+	Actor::Actor(name)
 {
 	m_health = health;
 	m_attackPower = attackPower;
