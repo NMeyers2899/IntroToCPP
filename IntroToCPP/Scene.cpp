@@ -3,7 +3,7 @@
 Scene::Scene()
 {
 	m_actorCount = 0;
-	m_actors[m_actorCount];
+	m_actors;
 }
 
 bool Scene::getStarted()
@@ -14,64 +14,45 @@ bool Scene::getStarted()
 
 void Scene::addActor(Actor* actor)
 {
-	Actor** tempArray = new Actor*[m_actorCount];
-
-	for (int i = 0; i < m_actorCount; i++)
-		tempArray[i] = m_actors[i];
-
-	tempArray[m_actorCount] = actor;
-
-	m_actors = tempArray;
-	m_actorCount++;
+	m_actors.addActor(actor);
 }
 
 bool Scene::removeActor(Actor* actor)
 {
-	bool actorRemoved = false;
-	int d = 0;
-
-	Actor** tempArray = new Actor*[m_actorCount - 1];
-
-	for (int i = 0; i < m_actorCount; i++)
-	{
-		if (actor == m_actors[i] && !actorRemoved)
-		{
-			d++;
-			actorRemoved = true;
-		}
-
-		tempArray[d] = m_actors[i];
-		d++;
-	}
-
-	m_actors = tempArray;
-	m_actorCount--;
-
-	return actorRemoved;
+	return m_actors.removeActor(actor);
 }
 
 void Scene::start()
 {
 	getStarted();
 
-	for (int i = 0; i < m_actorCount; i++)
-		m_actors[i]->start();
+	for (int i = 0; i < m_actors.getLength(); i++)
+		m_actors.getActor(i)->start();
 }
 
 void Scene::update()
 {
-	for (int i = 0; i < m_actorCount; i++)
-		m_actors[i]->update();
+	for (int i = 0; i < m_actors.getLength(); i++)
+	{
+		if (m_actors.getActor(i)->getStarted())
+			m_actors.getActor(i)->update();
+	}
 }
 
 void Scene::draw()
 {
-	for (int i = 0; i < m_actorCount; i++)
-		m_actors[i]->draw();
+	for (int i = 0; i < m_actors.getLength(); i++)
+	{
+		if (m_actors.getActor(i)->getStarted())
+			m_actors.getActor(i)->draw();
+	}
 }
 
 void Scene::end()
 {
-	for (int i = 0; i < m_actorCount; i++)
-		m_actors[i]->end();
+	for (int i = 0; i < m_actors.getLength(); i++)
+	{
+		if (m_actors.getActor(i)->getStarted())
+			m_actors.getActor(i)->end();
+	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "ActorArray.h"
 
 class Scene
 {
@@ -7,6 +8,7 @@ public:
 	Scene();
 
 	bool getStarted();
+
 	void addActor(Actor* actor);
 	bool removeActor(Actor* actor);
 
@@ -16,7 +18,7 @@ public:
 	virtual void end();
 
 private:
-	Actor** m_actors;
+	ActorArray m_actors;
 	bool m_started = false;
 	int m_actorCount;
 };
