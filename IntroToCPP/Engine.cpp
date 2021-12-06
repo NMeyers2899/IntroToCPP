@@ -10,8 +10,15 @@ Engine::Engine()
 	m_currentFighterIndex = 0;
 }
 
+Engine::~Engine()
+{
+	delete m_currentFighter1;
+	delete m_currentFighter2;
+}
+
 void Engine::start()
 {
+	// Initalizing the stats for entities.
 	Entity wompus = Entity('W', 3, 2, 1);
 	Entity redactedLittleSkeleton = Entity('r', 2, 1, 1);
 	Entity unclePhil = Entity('U', 2, 2, 1);
@@ -66,7 +73,7 @@ void Engine::draw()
 
 void Engine::end()
 {
-
+	
 }
 
 void Engine::run()

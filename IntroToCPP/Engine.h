@@ -1,16 +1,22 @@
 #pragma once
 #include "Entity.h"
+#include "Scene.h"
 
 class Engine
 {
 // Functions
 public :
 	Engine();
+	~Engine();
 
 	void run();
 
 	static bool getApplicationShouldClose() { return m_applicationShouldClose; }
 	static void setApplicationShouldClose(bool value) { m_applicationShouldClose = value; }
+
+	void addScene(Scene* scene);
+	static Scene* getCurrentScene();
+	static void setCurrentScene(int index);
 
 // Variables
 private :
