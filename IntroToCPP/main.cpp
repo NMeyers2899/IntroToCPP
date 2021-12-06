@@ -4,8 +4,10 @@
 
 int main()
 {
-	Engine engine = Engine();
-	engine.run();
+	Engine* engine = new Engine();
+	engine->run();
+
+	delete engine;
 
 	return 0;
 }

@@ -3,15 +3,13 @@
 
 Entity::Entity()
 {
-	m_icon = '\0';
 	m_health = 0;
 	m_attackPower = 0;
 	m_defense = 0;
 }
 
-Entity::Entity(char icon, float health, float attackPower, float defense)
+Entity::Entity(float health, float attackPower, float defense)
 {
-	m_icon = icon;
 	m_health = health;
 	m_attackPower = attackPower;
 	m_defense = defense;
@@ -45,7 +43,6 @@ float Entity::attack(Entity* target)
 
 void Entity::printStats()
 {
-	std::cout << m_icon << std::endl;
 	std::cout << "Health : " << getHealth() << std::endl;
 	std::cout << "Attack Power : " << getAttackPower() << std::endl;
 	std::cout << "Defense : " << getDefense() << std::endl;

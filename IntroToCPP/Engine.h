@@ -4,7 +4,6 @@
 
 class Engine
 {
-// Functions
 public :
 	Engine();
 	~Engine();
@@ -15,22 +14,16 @@ public :
 	static void setApplicationShouldClose(bool value) { m_applicationShouldClose = value; }
 
 	void addScene(Scene* scene);
-	static Scene* getCurrentScene();
-	static void setCurrentScene(int index);
+	static Scene* getCurrentScene() { return m_currentScene; }
+	static void setCurrentScene(int index) { m_currentScene = m_scenes[index]; }
 
-// Variables
 private :
 	static bool m_applicationShouldClose;
-	
-	Entity m_entities[3];
-	Entity* m_currentFighter1;
-	Entity* m_currentFighter2;
 
-	int m_entityCount;
-	int m_currentFighterIndex;
+	static Scene** m_scenes;
+	static Scene* m_currentScene;
+	static int m_sceneCount;
 
-// Functions
-private :
 	void start();
 	void update();
 	void draw();
